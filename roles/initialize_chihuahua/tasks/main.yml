@@ -30,3 +30,38 @@
     regexp: 'minimum-gas-prices '
     line: 'minimum-gas-prices = "{{ minimum_gas_price }}"'
     state: present
+
+- name: Set indexer to null (needed for pruning)
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+    regexp: 'indexer ='
+    line: 'indexer = "null"'
+    state: present
+
+- name: Set pruning to custom
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+    regexp: 'pruning ='
+    line: 'pruning = "custom"'
+    state: present
+
+- name: Set pruning-keep-recent
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+    regexp: 'pruning-keep-recent ='
+    line: 'pruning-keep-recent = "5000"'
+    state: present
+
+- name: Set pruning-keep-every
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+    regexp: 'pruning-keep-every ='
+    line: 'pruning-keep-every = "0"'
+    state: present
+
+- name: Set pruning-interval
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+    regexp: 'pruning-interval ='
+    line: 'pruning-interval = "10"'
+    state: present
