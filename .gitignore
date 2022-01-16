@@ -1,1 +1,4 @@
 inventory
+
+# Jetbrains IDE files
+.idea/
