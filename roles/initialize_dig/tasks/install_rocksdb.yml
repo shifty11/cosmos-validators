@@ -1,0 +1,16 @@
+---
+#RocksDB needs to be installed -> fix
+- name: Go get rocksdb
+  command: 'go install -tags rocksdb ./...'
+  args:
+    chdir: '/home/{{ ansible_user }}/{{ network }}'
+  environment:
+    PATH: '{{ path }}:/usr/local/go/bin'
+    GOPATH: '/home/{{ ansible_user }}/go'
+
+- name: Use RocksDB as DB backend
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/config.toml'
+    regexp: 'db_backend = '
+    line: 'db_backend = "rocksdb"'
+    state: present

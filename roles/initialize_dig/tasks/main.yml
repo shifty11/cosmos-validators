@@ -1,0 +1,28 @@
+---
+- name: Initialize Node
+  command: '{{ daemon }} init {{ validator_name }} --chain-id {{ chain_id }} -o'
+  environment:
+    PATH: '{{ path }}'
+
+- name: Download genesis file
+  get_url:
+    url: '{{ genesis }}'
+    dest: '/home/{{ ansible_user }}/{{ folder }}/config/genesis.json'
+    mode: '0644'
+
+- name: Update seeds in the config.toml file
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/config.toml'
+    regexp: 'seeds = ""'
+    line: 'seeds = "{{ seeds }}"'
+    state: present
+
+- name: Update the persistent_peers in the config.toml file
+  lineinfile:
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/config.toml'
+    regexp: 'persistent_peers = ""'
+    line: 'persistent_peers = "{{ peers }}"'
+    state: present
+
+#- name: install rocksdb
+#  import_tasks: install_rocksdb.yml
