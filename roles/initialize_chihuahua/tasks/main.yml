@@ -33,7 +33,7 @@
 
 - name: Set indexer to null (needed for pruning)
   lineinfile:
-    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+    path: '/home/{{ ansible_user }}/{{ folder }}/config/config.toml'
     regexp: 'indexer ='
     line: 'indexer = "null"'
     state: present
@@ -49,7 +49,7 @@
   lineinfile:
     path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
     regexp: 'pruning-keep-recent ='
-    line: 'pruning-keep-recent = "5000"'
+    line: 'pruning-keep-recent = "100"'
     state: present
 
 - name: Set pruning-keep-every
