@@ -3,7 +3,7 @@
 10.0.0.1 validator_name=YOUR_NODE_MONIKER log_name=YOUR_LOG_NAME
 
 [juno_mainnet_backup]
-10.0.0.2 validator_name=YOUR_BACKUP_NODE_MONIKER log_name=YOUR_BACKUP_LOG_NAME
+10.0.0.2 validator_name=YOUR_BACKUP_NODE_MONIKER log_name=YOUR_BACKUP_LOG_NAME cosmos_exporter=yes
 
 [juno_mainnet:children]
 juno_mainnet_main
@@ -15,5 +15,6 @@ ansible_port=22
 ansible_ssh_private_key_file="~/.ssh/id_rsa"
 path="/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/go/bin:/home/ubuntu/go/bin"
 node_exporter=true
+cosmos_exporter=no
 promtail=true
 log_monitor=http://10.0.0.100:3100

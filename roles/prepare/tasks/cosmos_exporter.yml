@@ -1,0 +1,46 @@
+---
+- name: Create CosmosExporter user
+  user:
+    name: cosmos_exporter
+    comment: 'CosmosExporter user'
+    shell: /usr/sbin/nologin
+    groups: ['systemd-journal', 'adm']
+    state: present
+
+- name: download cosmos_exporter
+  get_url:
+    url: 'https://github.com/solarlabsteam/cosmos-exporter/releases/download/v{{ cosmos_exporter_version }}/cosmos-exporter_{{ cosmos_exporter_version }}_Linux_x86_64.tar.gz'
+    checksum: 'sha256:{{ cosmos_exporter_checksum }}'
+    dest: '/tmp/cosmos_exporter-{{ cosmos_exporter_version }}_Linux_x86_64.tar.gz'
+    mode: '0700'
+
+- name: unarchive cosmos_exporter
+  unarchive:
+    src: '/tmp/cosmos_exporter-{{ cosmos_exporter_version }}_Linux_x86_64.tar.gz'
+    remote_src: yes
+    dest: '/tmp'
+
+- name: copy cosmos_exporter binary
+  copy:
+    src: '/tmp/cosmos-exporter'
+    dest: '/usr/local/bin/'
+    remote_src: true
+    owner: cosmos_exporter
+    group: cosmos_exporter
+    mode: 755
+
+- name: create cosmos_exporter systemd unit
+  template:
+    src: cosmos_exporter.service.j2
+    dest: /etc/systemd/system/cosmos_exporter.service
+    owner: cosmos_exporter
+    group: cosmos_exporter
+    mode: '600'
+
+- name: start cosmos_exporter service
+  systemd:
+    name: cosmos_exporter
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+  changed_when: false

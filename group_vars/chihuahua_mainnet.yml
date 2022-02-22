@@ -13,3 +13,7 @@ minimum_gas_price: '0.025uhuahua'
 denomination: 'uhuahua'
 threshold: 1000000
 transaction_extra_flag: ''
+
+# For cosmos_exporter
+bech_prefix: chihuahua
+denom: huahua

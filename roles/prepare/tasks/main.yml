@@ -8,6 +8,10 @@
   import_tasks: node_exporter.yml
   when: node_exporter|bool == true
 
+- name: install cosmos_exporter
+  import_tasks: cosmos_exporter.yml
+  when: cosmos_exporter|bool == true
+
 - name: install promtail
   import_tasks: promtail.yml
   when: promtail|bool == true

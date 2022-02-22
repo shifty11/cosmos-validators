@@ -16,6 +16,12 @@
     - not ufw_status_result.stdout is search("9100/tcp.*ALLOW IN.*Anywhere")
     - node_exporter|bool == true
 
+- name: open cosmos_exporter port
+  command: ufw allow 9300/tcp
+  when:
+    - not ufw_status_result.stdout is search("9300/tcp.*ALLOW IN.*Anywhere")
+    - cosmos_exporter|bool == true
+
 - name: open prometheus port
   command: ufw allow 26660/tcp
   when:
