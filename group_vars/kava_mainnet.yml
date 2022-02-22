@@ -12,3 +12,4 @@ seeds: '2c11fb480bb842e2fc181ab57c11baba0131dca3@44.196.226.19:26656'
 # For cosmos_exporter
 bech_prefix: kava
 denom: kava
+denom_coefficient: 1

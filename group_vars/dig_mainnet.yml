@@ -11,3 +11,4 @@ seeds: '37b2839da4463b22a51b1fe20d97992164270eba@62.171.157.192:26656,e2c96b96d4
 # For cosmos_exporter
 bech_prefix: dig
 denom: dig
+denom_coefficient: 1000000
