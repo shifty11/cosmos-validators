@@ -17,4 +17,4 @@ transaction_extra_flag: ''
 # For cosmos_exporter
 bech_prefix: chihuahua
 denom: huahua
-denom_coefficient: 1
+denom_coefficient: 1000000

@@ -10,6 +10,9 @@ cosmos_exporter_checksum: '5e3acbeee35f7708c2265a25fe20c0f44921f417a451ccc44c04f
 promtail_version: '2.4.1'
 promtail_checksum: 978391a174e71cfef444ab9dc012f95d5d7eae0d682eaf1da2ea18f793452031
 
+# cosmovisor
+cosmovisor_version: '1.0.0'
+
 # go
 go_version: '1.17.7'
 

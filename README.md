@@ -40,6 +40,7 @@ Needless to say, you need to update the dummy values in the inventory file. For 
 5. node_exporter: Default is `true`. Change it to `false` if you do not want to install node_exporter
 6. promtail: Default is `true`. Change it to `false` if you do not want to install promtail
 7. log_monitor: Enter your monitor server IP. It is most likely a private IP address if you use a firewall around your private virtual cloud (VPC). You do not need this if you do not install promtail
+8. cosmos_exporter: Default is `false`. Change it to `true` if you want to install cosmos_exporter
 
 It is beyond the scope of this guide to help you create a sudo user, alternate ssh port, create a private key, install Ansible on your machine, etc. You can do a quick online search and find the answers. In my experience, Digital Ocean have some quality guides on these topics. Stack Overflow can help you trouble-shoot if you are stuck.
 
