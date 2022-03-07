@@ -42,3 +42,11 @@
     daemon_reload: yes
     enabled: yes
   changed_when: false
+
+# journalctl needs to be restarted to show logs of cosmovisor when logged into the remote machine
+- name: restart journalctl
+  service:
+    name: systemd-journald
+    state: restarted
+  become: yes
+  changed_when: false
