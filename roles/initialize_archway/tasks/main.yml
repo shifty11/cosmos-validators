@@ -1,0 +1,67 @@
+---
+- name: Initialize Node
+  command: '{{ daemon }} init {{ validator_name }} --chain-id {{ chain_id }} -o'
+  environment:
+    PATH: '{{ path }}'
+
+#- name: Download genesis file
+#  get_url:
+#    url: '{{ genesis }}'
+#    dest: '/home/{{ ansible_user }}/{{ folder }}/config/genesis.json'
+#    mode: '0644'
+#
+#- name: Update seeds on the config.toml file
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/config.toml'
+#    regexp: 'seeds = ""'
+#    line: 'seeds = "{{ seeds }}"'
+#    state: present
+#
+#- name: Update the config.toml file
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/config.toml'
+#    regexp: 'persistent_peers = ""'
+#    line: 'persistent_peers = "{{ peers }}"'
+#    state: present
+#
+#- name: Update minimum gas price on config file
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+#    regexp: 'minimum-gas-prices '
+#    line: 'minimum-gas-prices = "{{ minimum_gas_price }}"'
+#    state: present
+#
+#- name: Set indexer to null (needed for pruning)
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/config.toml'
+#    regexp: 'indexer ='
+#    line: 'indexer = "null"'
+#    state: present
+#
+#- name: Set pruning to custom
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+#    regexp: 'pruning ='
+#    line: 'pruning = "custom"'
+#    state: present
+#
+#- name: Set pruning-keep-recent
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+#    regexp: 'pruning-keep-recent ='
+#    line: 'pruning-keep-recent = "100"'
+#    state: present
+#
+#- name: Set pruning-keep-every
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+#    regexp: 'pruning-keep-every ='
+#    line: 'pruning-keep-every = "0"'
+#    state: present
+#
+#- name: Set pruning-interval
+#  lineinfile:
+#    path: '/home/{{ ansible_user }}/{{ folder }}/config/app.toml'
+#    regexp: 'pruning-interval ='
+#    line: 'pruning-interval = "10"'
+#    state: present
